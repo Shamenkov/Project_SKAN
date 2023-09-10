@@ -1,0 +1,34 @@
+.Footer_container{
+    margin: 0px 60px 0px 60px;
+    background: #029491;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 137px;
+}
+@media screen and (max-width:600px) {
+    .Footer_container img{
+        height: 100px;
+    }
+}
+
+.FooterText{
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.02em;
+    text-align: right;
+    color: #fff;
+}
+
+.FooterText :nth-child(2){
+    font-family: 'Inter';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0.01em;
+    text-align: right;
+    color: #fff;
+}

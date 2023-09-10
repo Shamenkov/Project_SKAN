@@ -1,0 +1,270 @@
+.ResultPage_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.ResultPage_section1{
+    display: flex;
+    flex-direction: row;
+}
+
+.ResultPage_title{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ResultPage_title h1{
+    width: 509px;
+    font-family: 'Ferry';
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 48px;
+    letter-spacing: 0.04em;
+    text-align: left;
+}
+
+.ResultPage_title p{
+    width: 447px;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.ResultPage_pic{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.ResultPage_section2{
+    display: flex;
+    flex-direction: column;
+}
+
+.ResultPage_section2 h2{
+    font-family: 'Ferry';
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 36px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.ResultPage_section2 p{
+    font-family: 'Inter';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.Result_Summary{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.Result_Summary button{
+    border: none;
+    background: #fff;
+}
+
+.Result_BoardList{
+    display: flex;
+    flex-direction: row;
+    height: 158px;
+    border-radius: 10px;
+    border: 2px;
+    border: 2px solid #029491
+}
+
+.Result_ListTitle{
+    width: 133px;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: #029491;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 8px 0px 0px 8px;
+}
+
+.Result_ListTitle li{
+    list-style: none;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #fff;
+}
+
+
+.Result_ListContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.Result_ListContainer img{
+    height: 124px;
+    margin: 17px 0px 0px 18px;
+}
+
+.Result_List{
+    padding: 0;
+    margin: 0px 0px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Result_List li{
+    list-style: none;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.ResultPage_section3{
+    display: flex;
+    flex-direction: column;margin-top: 107px;
+}
+
+.ResultPage_section3 h2{
+    font-family: 'Ferry';
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 36px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.Doc_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.Doc_section{
+    display: flex;
+    flex-direction: column;
+    width: 641px;
+    height: 694px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px #00000033;
+}
+
+.Doc_block{
+    margin: 19px 30px 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Doc_date{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    justify-items: flex-start;
+}
+
+.Doc_date p{
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.Doc_title{
+    display: flex;
+    flex-direction: column;
+}
+
+.Doc_title h3{
+    font-family: 'Inter';
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 31px;
+    letter-spacing: 0.02em;
+    text-align: left;    
+}
+
+.Doc_type{
+    max-width: 157px;
+    padding: 4px 11px 3px 9px;
+    border-radius: 5px;
+    background: #FFB64F;
+    font-family: 'Inter';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0.02em;
+    text-align: center;
+}
+
+.Doc_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.Doc_main p{
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.Doc_infoButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Doc_parentLink{
+    width: 223px;
+    height: 46px;
+    border-radius: 5px;
+    background: #7CE3E1;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    border: none;
+    
+}
+
+.Doc_infoButton p{
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #949494;
+}

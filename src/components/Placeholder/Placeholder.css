@@ -1,0 +1,234 @@
+.Placeholder_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media screen and (max-width:768px) {
+    .Placeholder_container{
+        align-items: center;
+    }
+}
+
+
+.section1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Placeholder_lock{
+    width: 75px;
+    height: 92px;
+    margin-bottom: -35px;
+    z-index: 1;
+}
+
+@media screen and (max-width:768px) {
+    .Placeholder_lock{
+        margin-bottom: -25px;
+    }
+}
+
+.Placeholder_content{
+    margin-left: 45px;
+    width: 429px;
+    height: 523px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px #00000026;
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width:768px) {
+    .Placeholder_content{
+        margin-left: 0px;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px 0px #00000026;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.EmptyLink{
+    margin-top: 15px;
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.02em;
+    text-align: left;
+
+}
+
+.TitleForLogWith{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: flex-start;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.Placeholder_buttons{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.enter_Button{
+    padding: 0;
+    width: 151px;
+    height: 32px;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #029491;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #029491 1px;
+    background-color: #fff;
+    
+}
+
+.registration_Button{
+    margin-left: 15px;
+    padding: 0;
+    width: 151px;
+    height: 32px;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #C7C7C7;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid  #C7C7C7 1px;
+    background-color: #fff;
+}
+
+.Placeholder_inputs{
+    width: 90%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Placeholder_inputs p{
+    margin: 0;
+}
+
+.Placeholder_inputs label{
+    width: 100%;
+    margin-bottom: 0px;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #949494;
+}
+
+.Placeholder_inputs input{
+    margin-top: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 43px;
+    border-radius: 5px;
+    border: solid 1px #C7C7C7;
+}
+
+.Submit_button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    border: none;
+    width: 90%;
+    height: 59px;
+    border-radius: 5px;
+    opacity: 0.5px;
+    background: #5970FF;
+    font-family: 'Inter';
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+/* .Submit_button a{
+    font-family: 'Inter';
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+} */
+
+.Placeholder_loginWith{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+
+.google_Button{
+    margin-right: 10px;
+    background-color: #fff;
+    width: 96px;
+    height: 31px;
+    border-radius: 3px;
+    border: 1px solid #5970FF82
+}
+
+.google_Button img {
+    width: 59px;
+    height: 19px;
+}
+
+.facebook_Button{
+    margin-right: 10px;
+    background-color: #fff;
+    width: 96px;
+    height: 31px;
+    border-radius: 3px;
+    border: 1px solid #5970FF82
+}
+
+.facebook_Button img {
+    width: 59px;
+    height: 12px;
+}
+
+.Yandex_Button{
+    background-color: #fff;
+    width: 96px;
+    height: 31px;
+    border-radius: 3px;
+    border: 1px solid #5970FF82
+}
+
+.Yandex_Button img {
+    width: 56px;
+    height: 16px;
+}

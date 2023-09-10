@@ -1,0 +1,465 @@
+.SearchPage_container{
+    display: flex;
+    flex-direction: row;
+}
+@media screen and (max-width:1330px) {
+    .SearchPage_container{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center ;
+    }
+}
+
+.SearchPage_section1{
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width:1000px) {
+    .SearchPage_section1{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.SearchPage_section1 h1{
+    margin: 0;
+    font-family: 'Ferry';
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 48px;
+    letter-spacing: 0.03em;
+    text-align: left;
+
+}
+
+@media screen and (max-width:1000px) {
+    .SearchPage_section1 h1{
+        font-family: 'Ferry';
+        font-size: 28px;
+        font-weight: 900;
+        line-height: 34px;
+        letter-spacing: 0.01em;
+        text-align: left;
+    }
+}
+
+
+
+.SearchPage_description{
+    width: 100%;
+    margin: 25px 0px 47px 0px;
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.SearchPage_form{
+    height: 735px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 0px 20px 0px #00000033;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+@media screen and (max-width:1000px) {
+    .SearchPage_form{
+        width: 100%;
+    }
+}
+
+.SearchForm_Container{
+    width: 850px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 21px 39px 32px 44px;
+}
+@media screen and (max-width:833px) {
+    .SearchForm_Container{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        align-items: center;
+    }
+}
+@media screen and (max-width:1000px) {
+    .SearchForm_Container{
+        width: 90%;
+    }
+}
+
+.FormSetting_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+@media screen and (max-width:768px) {
+    .FormSetting_container{
+        justify-content: center;
+    }
+}
+
+.SearchForm_section1{
+    display: flex;
+    flex-direction: column;
+}
+
+.FormLabel_Inn{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.FormLabel_Inn span{
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: #FF5959;
+}
+
+.FormLabel_DocCount{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.FormLabel_DocCount span{
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: #FF5959;
+}
+
+.FormInputTitle{
+    margin: 0px 0px 20px 0px;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    text-align: left;
+}
+
+.SearchForm_section1 input{
+    padding-left: 5px;
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    max-width: 242px;
+    height: 43px;
+    border-radius: 5px;
+    border: 1px;
+    border: 1px solid #C7C7C7;
+    box-shadow: 0px 0px 20px 0px #0000000D;
+}
+
+.SearchForm_section1 input::placeholder{
+    text-align: center;
+}
+
+.SearchForm_section1 select{
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    width: 242px;
+    height: 43px;
+    border-radius: 5px;
+    border: 1px;
+    border: 1px solid #C7C7C7;
+    box-shadow: 0px 0px 20px 0px #0000000D;
+}
+
+
+.Form_date{
+    display: flex;
+    flex-direction: row;
+}
+
+.SearchForm_section2{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items:stretch;
+    justify-content: space-between;
+}
+
+@media screen and (max-width:833px) {
+    .SearchForm_section2{
+        display: none;
+    }
+}
+
+.checkboxBlock{
+    display: flex;
+    flex-direction: column;
+}
+
+.maxFullness{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 15px;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    text-align: left;
+}
+.maxFullness input{
+    display: none;
+}
+
+.fakeCheckbox{
+    display: inline-block;
+    width: 20px;   
+    height: 20px;
+    border: 1px solid black;
+    position: relative;
+    margin-right: 17px;
+}
+
+.fakeCheckbox::before{
+    display: block;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) ;
+    width: 8px;
+    height: 14px;
+    transform: scale(0.9) rotate(45deg) translate(-110%, -20%);
+    border-bottom: 4px solid rgb(82, 255, 47);
+    border-right: 3px solid rgb(82, 255, 47);
+    background-color: #fff;
+    opacity: 0;
+    transition: .2s;
+}
+
+.maxFullness input:checked + .fakeCheckbox::before{
+    opacity: 1;
+}
+
+.businesContext{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 15px;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    text-align: left;
+}
+.businesContext input{
+    display: none;
+}
+
+.businesContext input:checked + .fakeCheckbox::before{
+    opacity: 1;
+}
+
+.mainRole{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 15px;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    text-align: left;
+}
+.mainRole input{
+    display: none;
+}
+
+.mainRole input:checked + .fakeCheckbox::before{
+    opacity: 1;
+}
+
+.disabledCheckbox{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 15px;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    color:#aca9a9
+}
+
+.disabledCheckbox .fakeCheckbox{
+    display: inline-block;
+    width: 20px;   
+    height: 20px;
+    border: 1px solid grey;
+    position: relative;
+    margin-right: 17px;
+}
+
+.disabledCheckbox input{
+    display: none;
+}
+
+.disabledCheckbox input:checked + .fakeCheckbox::before{
+    opacity: 1;
+}
+
+.anonsAndCalendar{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 15px;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    text-align: left;
+}
+.anonsAndCalendar input{
+    display: none;
+}
+
+.anonsAndCalendar input:checked + .fakeCheckbox::before{
+    opacity: 1;
+}
+
+
+
+
+
+
+.formSubmit_button{
+    color: #fff;
+    border: none;
+    padding: 0;
+    width: 305px;
+    height: 59px;
+    border-radius: 5px;
+    background: #5970FF;
+    font-family: 'Inter';
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media screen and (max-width:833px) {
+    .formSubmit_button{
+        margin-top: 40px;
+    }
+}
+
+.formSubmit_buttonDisabled{
+    background: #5970FF;
+    opacity: 0.5;
+    cursor: default;
+    color: #fff;
+    border: none;
+    padding: 0;
+    width: 305px;
+    height: 59px;
+    border-radius: 5px;
+    font-family: 'Inter';
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: 0.03em;
+    text-align: center;
+}
+@media screen and (max-width:833px) {
+    .formSubmit_buttonDisabled{
+        margin-top: 40px;
+    }
+}
+
+.confirmBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+.confirmBlock p{
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.03em;
+    text-align: left;
+}
+
+.SearchPage_section2{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.imagesContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.imagesContainer :nth-child(1){
+    width: 91px;
+    height: 111px;
+}
+
+.imagesContainer :nth-child(2){
+    width: 140px;
+    height: 68px;
+}
+
+.Search_mainPic{
+    max-width: 442px;
+    height: 100%;
+    margin-left: 150px;
+}
+
+@media screen and (max-width:1500px) {
+    .Search_mainPic{
+        margin-left: 0px;
+    }
+}
+
+.FormLabel_Date{
+    display: flex;
+    flex-direction: column;
+}
+.datepicker_container{
+    display: flex;
+    flex-direction: row;
+}
+
+.startDate{
+    margin-right: 20px;
+}
