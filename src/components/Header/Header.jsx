@@ -56,7 +56,7 @@ const Header = () =>{
             <div className="clientBlock">
                 <div className="clientInfo">
                     <p className="clientName">Никита Ш.</p>
-                    <button className="clientButtonExit" onClick={logoutFetch}>Выйти</button>
+                    <Link to="/" className="clientButtonExit" onClick={logoutFetch}>Выйти</Link>
                 </div>
                 <div className="clientAvatar" onClick={() => dispatch(accountInfo())}>
                     <img src={require('../images/avatar_person_user_icon_250196.png')}/>

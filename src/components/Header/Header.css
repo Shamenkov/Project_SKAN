@@ -177,6 +177,8 @@
 }
 
 .clientButtonExit{
+    text-decoration: none;
+    display: flex;
     margin-top: 3px;
     width: 31px;
     height: 12px;
@@ -190,7 +192,9 @@
     border: none;
     padding: 0;
     cursor: pointer;
+    color: #616161;
 }
+
 
 .clientTarifInfo{
     font-family: 'Inter';

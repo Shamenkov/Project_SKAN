@@ -4,7 +4,7 @@ import DatePicker, { registerLocale, setDefaultLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ru from 'date-fns/locale/ru';
 import { useDispatch } from "react-redux";
-import { setHistograms } from "../../redux/action/histograms";
+import { histograms, setHistograms } from "../../redux/action/histograms";
 registerLocale('ru', ru)
 setDefaultLocale('ru')
 //7710140679
@@ -24,7 +24,7 @@ const SearchForm = () =>{
 
     const [innValue, setInnValue] = useState('')
     const [docCountValue, setDocCountValue] = useState('')
-    const [selectValue, setSelectValue] = useState('')
+    const [selectValue, setSelectValue] = useState('any')
 
     const [validateErrorsInn,setValidateErrorsInn] = useState('')
     const [ErrorsInn, setErrorsInn] = useState(false)
@@ -108,8 +108,8 @@ const SearchForm = () =>{
     const fetchHistogram = () =>{
         const innerData = {
             "issueDateInterval": {
-              "startDate": startDate,              
-              "endDate": endDate
+              "startDate": '2019-01-01T00:00:00+03:00',              
+              "endDate": '2022-08-31T23:59:59+03:00'
             },
             "searchContext": {
               "targetSearchEntitiesContext": {
@@ -166,7 +166,7 @@ const SearchForm = () =>{
           }
         console.log(innerData);
         
-        // dispatch(setHistograms(innerData))
+        dispatch(histograms(innerData))
     }
 
     //USE-EFFECT
@@ -270,7 +270,7 @@ const SearchForm = () =>{
                 </div>
             </div>
         </div>
-        {isValueNotEmpty ? <button className="formSubmit_button" onClick={fetchHistogram}>Поиск</button> : <button className="formSubmit_buttonDisabled" disabled onClick={() => console.log('Fuck you!')}>Поиск</button>}
+        {isValueNotEmpty ? <button className="formSubmit_button" onClick={fetchHistogram}>Поиск</button> : <button className="formSubmit_buttonDisabled" disabled>Поиск</button>}
         <p>* Обязательные к заполнению поля</p>
     </div>
         

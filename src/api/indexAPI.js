@@ -10,10 +10,10 @@ import {
 const instance = axios.create({
   baseURL: BASE_URL,
   withCredentials: false,
-  // headers: {
-  //   'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-  //   // 'Content-Type': 'application/json', 
-  // }
+  headers: {
+    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+    // 'Content-Type': 'application/json', 
+  }
 });
 
 export const appAPI = {
@@ -41,7 +41,7 @@ export const appAPI = {
 
   async histograms(incomingData){
     try{
-      return await instance.post(HISTOGRAMS,{headers: {'Authorization': `Bearer ${localStorage.getItem('accessToken')}`}}, incomingData);
+      return await instance.post(HISTOGRAMS, incomingData);
     }
     catch(err){
       console.error('Не удалось получить сводку по количеству публикаций на конкретные даты', err);
