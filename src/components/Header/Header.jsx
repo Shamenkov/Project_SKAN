@@ -9,7 +9,6 @@ import { accountInfo } from "../../redux/action/getAccountInfo";
 
 const Header = () =>{
     const store = useSelector(state =>state)
-    console.log(store)
 
     const dispatch = useDispatch();
     const isAuth = localStorage.getItem('isAuth')

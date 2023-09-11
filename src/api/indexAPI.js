@@ -31,7 +31,8 @@ export const appAPI = {
     try{
       return await instance.get(ACCOUNT_INFO, {headers: {
         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-        // 'Content-Type': 'application/json', 
+        'Content-Type': 'application/json',
+        'Accept': "application/json"
       }});
     }
     catch(err){

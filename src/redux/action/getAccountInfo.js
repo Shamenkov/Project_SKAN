@@ -6,7 +6,6 @@ export const GetAccountInfo = (payload) => ({type:GET_ACCOUNT_INFO, payload});
 export const accountInfo = () => async(dispatch) =>{
     try{        
         const response = await appAPI.getAccountInfo()
-        console.log(response.data)
         dispatch(GetAccountInfo(response.data))
         localStorage.setItem('AccountInfoTake', true);
     }

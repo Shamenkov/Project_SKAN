@@ -155,7 +155,7 @@ const SearchForm = () =>{
               "excludeDigests": true
             },
             "similarMode": "none",
-            "limit": docCountValue,
+            "limit": Number(docCountValue),
             "sortType": "sourceInfluence",
             "sortDirectionType": "desc",
             "intervalType": "month",
@@ -164,6 +164,7 @@ const SearchForm = () =>{
               "riskFactors"
             ]
           }
+
         console.log(innerData);
         
         dispatch(histograms(innerData))
