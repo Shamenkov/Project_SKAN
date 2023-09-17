@@ -35,12 +35,11 @@
 }
 
 .Result{
-  width: 100%;
   padding: 0px 60px 0px 60px;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (min-width:300px) and (max-width:1440px) {
   .Result{
-    padding: 0px 19px 0px 26px;
+    padding: 0;
   }
 }

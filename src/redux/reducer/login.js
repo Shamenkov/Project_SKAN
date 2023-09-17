@@ -3,7 +3,7 @@ import {SET_LOGIN, SET_LOGOUT} from '../../constants/constants'
 const initialState ={
     accessToken: '',
     expire:'',
-    isAuth: true
+    isAuth: false,
 }
 
 const login = (state = initialState, action) =>{

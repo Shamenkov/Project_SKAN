@@ -76,6 +76,7 @@
 .Result_Summary button{
     border: none;
     background: #fff;
+    cursor: pointer;
 }
 
 .Result_BoardList{
@@ -83,12 +84,12 @@
     flex-direction: row;
     height: 158px;
     border-radius: 10px;
-    border: 2px;
-    border: 2px solid #029491
+    border: 2px solid #029491;
+    overflow: hidden;
 }
 
 .Result_ListTitle{
-    width: 133px;
+    min-width: 133px;
     height: 100%;
     padding: 0;
     margin: 0;
@@ -98,6 +99,12 @@
     align-items: center;
     justify-content: space-around;
     border-radius: 8px 0px 0px 8px;
+}
+
+.Result_sliderContainer{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
 }
 
 .Result_ListTitle li{
@@ -115,6 +122,8 @@
 .Result_ListContainer{
     display: flex;
     flex-direction: row;
+    height: 150px;
+    transition: 1s;
 }
 
 .Result_ListContainer img{
@@ -139,11 +148,14 @@
     line-height: 24px;
     letter-spacing: 0.02em;
     text-align: left;
+    margin-bottom: 10px;
 }
 
 .ResultPage_section3{
     display: flex;
-    flex-direction: column;margin-top: 107px;
+    flex-direction: column;
+    margin-top: 107px;
+    align-items: center;
 }
 
 .ResultPage_section3 h2{
@@ -157,6 +169,7 @@
 
 .Doc_container{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
 
@@ -166,9 +179,9 @@
     display: flex;
     flex-direction: column;
     width: 641px;
-    height: 694px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px 0px #00000033;
+    margin-bottom: 40px;
 }
 
 .Doc_block{
@@ -192,6 +205,18 @@
     line-height: 19px;
     letter-spacing: 0.02em;
     text-align: left;
+    margin-right: 14px;
+}
+.Doc_date a{
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    margin-right: 14px;
+    color:#949494;
+    margin: 16px 0px 16px 0px
 }
 
 .Doc_title{
@@ -256,7 +281,12 @@
     letter-spacing: 0.02em;
     text-align: center;
     border: none;
-    
+    text-decoration: none;
+    color: black;
+}
+.Doc_parentLink a{
+    text-decoration: none;
+    color: black;
 }
 
 .Doc_infoButton p{
@@ -267,4 +297,25 @@
     letter-spacing: 0.02em;
     text-align: left;
     color: #949494;
+}
+
+.ResultPage_paginationButton{
+    width: 305px;
+    height: 59px;
+    border-radius: 5px;
+    background: #5970FF;
+    font-family: 'Inter';
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+}
+
+.ResultPage_paginationButton:hover{
+    transform: scale(0.95);
+    background: #4e65ff;
 }

@@ -4,7 +4,9 @@ import {
   BASE_URL,
   LOGIN,
   ACCOUNT_INFO,
-  HISTOGRAMS
+  HISTOGRAMS,
+  OBJECTSEARCH,
+  DOCUMENTS
 } from '../constants/constants';
 
 const instance = axios.create({
@@ -12,7 +14,7 @@ const instance = axios.create({
   withCredentials: false,
   headers: {
     'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-    // 'Content-Type': 'application/json', 
+    'Content-Type': 'application/json', 
   }
 });
 
@@ -29,11 +31,13 @@ export const appAPI = {
 
   async getAccountInfo (){
     try{
-      return await instance.get(ACCOUNT_INFO, {headers: {
+      return await instance.get(ACCOUNT_INFO, 
+        {headers: {
         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
         'Content-Type': 'application/json',
         'Accept': "application/json"
-      }});
+      }}
+      );
     }
     catch(err){
       console.error('Не удалось получить информацию об аккаунте', err);
@@ -46,6 +50,24 @@ export const appAPI = {
     }
     catch(err){
       console.error('Не удалось получить сводку по количеству публикаций на конкретные даты', err);
+    }
+  },
+
+  async objectSearch(incomingData){
+    try{
+      return await instance.post(OBJECTSEARCH, incomingData);
+    }
+    catch(err){
+      console.log('Не удалось получить список id записей', err)
+    }
+  },
+  
+  async documents(ids){
+    try{
+      return await instance.post(DOCUMENTS, ids);
+    }
+    catch(err){
+      console.log('Не удалось получить список документов', err)
     }
   }
 };

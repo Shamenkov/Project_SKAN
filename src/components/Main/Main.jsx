@@ -7,8 +7,9 @@ import './Main.css'
 
 
 const Main = () =>{
-    const isAuth = useSelector(state=>state.login.isAuth)
-
+    const store = useSelector(state=>state)
+    
+    const isAuth = localStorage.getItem('isAuth')
     useEffect(() =>{
     },[isAuth])
 
@@ -30,6 +31,20 @@ const Main = () =>{
             <div className="mainSection_3">
                 <h1>наши тарифы</h1>
                 <div className="RateBlocksContainer">
+                    {isAuth ? <RateBlock 
+                    RateBlockHeader={'BeginnerBlock'}
+                    title={'Beginner'} 
+                    titleDescription={'Для небольшого исследования'} 
+                    img = {require ('..//images//BeginnerLight.png')}
+                    price={'799 ₽'} 
+                    oldPrice={'1 200 ₽'}
+                    priceDescription={'или 150 ₽/мес. при рассрочке на 24 мес.'} 
+                    RateDescriptionList1={'Безлимитная история запросов'} 
+                    RateDescriptionList2={'Безопасная сделка'} 
+                    RateDescriptionList3={'Поддержка 24/7'} 
+
+                    buttonTitle={'Перейти в личный кабинет'}/> 
+                    :
                     <RateBlock 
                     RateBlockHeader={'BeginnerBlock'}
                     title={'Beginner'} 
@@ -41,7 +56,9 @@ const Main = () =>{
                     RateDescriptionList1={'Безлимитная история запросов'} 
                     RateDescriptionList2={'Безопасная сделка'} 
                     RateDescriptionList3={'Поддержка 24/7'} 
-                    buttonTitle={'Перейти в личный кабинет'}/>
+                    buttonTitle={'Подробнее'}/>
+                    }
+                    
                     <RateBlock 
                     RateBlockHeader={'ProBlock'}
                     title={'Pro'} 

@@ -9,7 +9,7 @@ const histogramsReduce = (state=initialState, action) => {
         case SET_HISTOGRAMS:
             return{
             ...state,
-            data: action.payload
+            data: action.payload.data
         }
         default: return state
     }

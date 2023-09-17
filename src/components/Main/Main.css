@@ -139,6 +139,11 @@
     text-decoration: none;
 }
 
+.descriptoin_button:hover{
+    transform: scale(0.95);
+    transition: 0.2;
+    background: #536aff;
+}
 @media screen and (max-width:600px) {
     .descriptoin_button{
         width: 100%;

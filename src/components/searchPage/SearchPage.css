@@ -142,6 +142,16 @@
     color: #FF5959;
 }
 
+.FormLabel_Date span{
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: #FF5959;
+}
+
 .FormInputTitle{
     margin: 0px 0px 20px 0px;
     font-family: 'Inter';
@@ -235,6 +245,10 @@
     border: 1px solid black;
     position: relative;
     margin-right: 17px;
+    cursor: pointer;
+}
+.fakeCheckbox:hover{
+    transform: scale(1.1);
 }
 
 .fakeCheckbox::before{
@@ -243,7 +257,6 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) ;
     width: 8px;
     height: 14px;
     transform: scale(0.9) rotate(45deg) translate(-110%, -20%);
@@ -349,12 +362,11 @@
     opacity: 1;
 }
 
-
-
-
-
-
 .formSubmit_button{
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
     color: #fff;
     border: none;
     padding: 0;
@@ -369,6 +381,11 @@
     letter-spacing: 0.03em;
     text-align: center;
     cursor: pointer;
+}
+
+.formSubmit_button:hover{
+    transform: scale(0.95);
+    background: #4e65ff;
 }
 
 @media screen and (max-width:833px) {

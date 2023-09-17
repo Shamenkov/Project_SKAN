@@ -8,9 +8,9 @@ import { accountInfo } from "../../redux/action/getAccountInfo";
 
 
 const Header = () =>{
-    const store = useSelector(state =>state)
-
+    const store = useSelector(state => state)
     const dispatch = useDispatch();
+
     const isAuth = localStorage.getItem('isAuth')
     const AccountInfoTake = localStorage.getItem('AccountInfoTake');
     const usedCompanyCount = useSelector(state =>state.accountInfo.usedCompanyCount)
@@ -23,9 +23,9 @@ const Header = () =>{
     const logoutFetch = () =>{
         dispatch(logout())
     }
-
+    
     useEffect(() =>{
-        delay(3000).then(dispatch(accountInfo()))
+        setTimeout(() => dispatch(accountInfo()),3000)
     },[isAuth])
 
     return(
@@ -41,16 +41,14 @@ const Header = () =>{
                     <div>Использовано компаний <p className="UsedCompCount">{usedCompanyCount}</p></div>
                     <div className="LimitCompBlock">Лимит по компаниям <p className="LimitComp">{companyLimit}</p></div>
                  </div>}
-            {/* {isAuth ? 
+            {/* {isLoginLoading && 
                 <div className="Preloader">
                     <div className="loadingio-spinner-spinner-uftfniz7vpq"><div className="ldio-w8quksv06v">
                         <div>
                             </div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
                         </div>
                     </div>
-                </div>
-            :
-            null} */}
+                </div>} */}
             {isAuth ? 
             <div className="clientBlock">
                 <div className="clientInfo">
@@ -67,7 +65,7 @@ const Header = () =>{
                 <svg width="2" height="26" viewBox="0 0 2 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect opacity="0.6" width="2" height="26" transform="matrix(-1 0 0 1 2 0)" fill="#029491"/>
                 </svg>
-                <button><Link to="/LoginPage">Войти</Link></button>
+                <button className="Header_LoginButton"><Link to="/LoginPage" >Войти</Link></button>
             </div> 
             }
             <button className="Header_MobButton">

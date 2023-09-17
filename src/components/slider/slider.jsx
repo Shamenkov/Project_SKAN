@@ -74,7 +74,6 @@ const SliderComponent = () =>{
             ImgSrc={require ("..//images//shield.png")}
             description={"Защита конфеденциальных сведений, не подлежащих разглашению по федеральному законодательству"}
         />
-        {/*  */}
         </Slider>        
     )
     

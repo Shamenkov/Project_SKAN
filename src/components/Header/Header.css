@@ -61,7 +61,7 @@
 
 .buttonsContainer :nth-child(1){
     border: none;
-    background-color: #fff;
+    background-color: transparent;
     font-family: 'Inter';
     font-size: 14px;
     font-weight: 400;
@@ -88,7 +88,7 @@
 }
 
 
-.buttonsContainer :nth-child(3){
+.Header_LoginButton{
     padding: 0;
     width: 65px;
     height: 26px;
@@ -104,13 +104,18 @@
     color: #000;
 }
 
+.Header_LoginButton:hover{
+    background: #FFB64F;
+    transform: scale(1.1,1.1);
+}
+
 @media screen and (max-width:600px) {
-    .buttonsContainer :nth-child(3){
+    .Header_LoginButton{
         display: none;
     }
 }
 
-.buttonsContainer :nth-child(3) a{
+.Header_LoginButton a{
     text-decoration: none;
     background: #7CE3E1;
 }
@@ -193,6 +198,12 @@
     padding: 0;
     cursor: pointer;
     color: #616161;
+}
+
+.clientButtonExit:hover{
+    transform: scale(1.1);
+    transition: 0.2;
+    
 }
 
 

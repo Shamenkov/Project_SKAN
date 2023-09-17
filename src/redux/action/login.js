@@ -9,7 +9,6 @@ export const login = (login, password) => async(dispatch) =>{
         dispatch(setLogin(response.data));
         localStorage.setItem('isAuth', true);
         localStorage.setItem('accessToken', response.data.accessToken);
-
     }
     catch(error){
         console.error('Не удалось авторизироваться', error);

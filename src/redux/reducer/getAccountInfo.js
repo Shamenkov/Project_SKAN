@@ -11,8 +11,7 @@ const accountInfo = (state = initialState, action) =>{
             return{
                 ...state,
                 usedCompanyCount:action.payload.eventFiltersInfo.usedCompanyCount,
-                companyLimit: action.payload.eventFiltersInfo.companyLimit,
-                AccountInfoTake: true
+                companyLimit: action.payload.eventFiltersInfo.companyLimit
             }
         default: return state
     }

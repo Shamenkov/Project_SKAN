@@ -174,16 +174,10 @@
     color: #fff;
 }
 
-/* .Submit_button a{
-    font-family: 'Inter';
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 27px;
-    letter-spacing: 0.02em;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-} */
+.Submit_button:hover{
+    transform: scale(0.95);
+    background: #4e65ff;
+}
 
 .Placeholder_loginWith{
     display: flex;
