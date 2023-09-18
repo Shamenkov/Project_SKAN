@@ -6,8 +6,8 @@ export const setHistograms = (payload) => ({type:SET_HISTOGRAMS, payload});
 export const histograms = (incomingData) => async(dispatch) =>{
     try{
         const response = await appAPI.histograms(incomingData);
-        console.log(response.data)
         dispatch(setHistograms(response.data));
+        console.log(response.data);
     }
     catch(error){
         console.error('Не удалось получить сводку по количеству публикаций на конкретные даты', error);

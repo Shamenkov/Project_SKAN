@@ -6,7 +6,7 @@ import { login} from "../../redux/action/login";
 import { Link } from "react-router-dom";
 
 const Placeholder = () =>{
-    
+    const isLoadingError = localStorage.getItem('isLoadingError');
     const [emailInputValue, setEmailInputValue] = useState('');
     const [passwordInputValue, setPasswordInputValue] = useState('');
     const dispatch = useDispatch();
@@ -15,8 +15,6 @@ const Placeholder = () =>{
         dispatch(login(emailInputValue, passwordInputValue))
     }
     
-    
-
     return(
         <div className="Placeholder_container">
             <img src={require('../images/PlaceholderPic.png')} className='Placeholder_lock'/>
@@ -35,9 +33,9 @@ const Placeholder = () =>{
                         <p>Пароль:</p>
                         <input type='password' onChange={(e) => setPasswordInputValue(e.target.value)}></input>
                     </label>
+                    {isLoadingError ? <span className="isLoadingError_span">Неправильный пароль</span> : null}
                 </div>
-                {/* <button  ></button> */}
-                <Link to="/" className="Submit_button" onClick={loginFetch}>Войти</Link>
+                <button className="Submit_button" onClick={loginFetch}>Войти</button>
                 <a className='EmptyLink' href="#password">Востановить пароль</a>
                 <p className="TitleForLogWith">Войти через:</p>
                 <div className="Placeholder_loginWith">

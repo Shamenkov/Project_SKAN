@@ -2,9 +2,9 @@ import React from "react";
 import Slider from "../slider/slider";
 import './rateBlock.css'
 
-const RateBlock = ({RateBlockHeader, title, titleDescription, img, price, oldPrice, priceDescription, RateDescriptionList1, RateDescriptionList2, RateDescriptionList3, buttonTitle}) =>{
+const RateBlock = ({RateBlockHeader, title, titleDescription, img, price, oldPrice, priceDescription, RateDescriptionList1, RateDescriptionList2, RateDescriptionList3, buttonTitle, isActive}) =>{
     return(
-        <div className="RateBlockBox">
+        <div className={isActive ?"RateBlockBox_active" :"RateBlockBox"}>
             <div className={RateBlockHeader}>
                 <div className="RateBlockTitle">
                     <h3>{title}</h3>

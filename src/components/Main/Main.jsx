@@ -32,6 +32,7 @@ const Main = () =>{
                 <h1>наши тарифы</h1>
                 <div className="RateBlocksContainer">
                     {isAuth ? <RateBlock 
+                    isActive={isAuth}
                     RateBlockHeader={'BeginnerBlock'}
                     title={'Beginner'} 
                     titleDescription={'Для небольшого исследования'} 
@@ -42,7 +43,6 @@ const Main = () =>{
                     RateDescriptionList1={'Безлимитная история запросов'} 
                     RateDescriptionList2={'Безопасная сделка'} 
                     RateDescriptionList3={'Поддержка 24/7'} 
-
                     buttonTitle={'Перейти в личный кабинет'}/> 
                     :
                     <RateBlock 

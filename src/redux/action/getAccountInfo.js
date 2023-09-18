@@ -8,6 +8,7 @@ export const accountInfo = () => async(dispatch) =>{
         const response = await appAPI.getAccountInfo()
         dispatch(GetAccountInfo(response.data))
         localStorage.setItem('AccountInfoTake', true);
+        localStorage.removeItem('isLoading');
     }
     catch(error){
         console.error('Не удалось получить информацию об аккаунте', error);

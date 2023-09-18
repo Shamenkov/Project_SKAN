@@ -8,10 +8,13 @@ export const login = (login, password) => async(dispatch) =>{
         const response = await appAPI.login(login, password);
         dispatch(setLogin(response.data));
         localStorage.setItem('isAuth', true);
-        localStorage.setItem('accessToken', response.data.accessToken);
+        localStorage.setItem('accessToken', response.data.accessToken);  
+        localStorage.setItem('isLoading', true);
+        localStorage.removeItem('isLoadingError');
+              
     }
     catch(error){
-        console.error('Не удалось авторизироваться', error);
+        localStorage.setItem('isLoadingError', true);
     }
 }
 
@@ -20,6 +23,7 @@ export const setLogout = (payload) => ({type:SET_LOGOUT, payload});
 export const logout = () => async(dispatch) =>{
     try{
         dispatch(setLogout())
+        localStorage.removeItem('isLoading');
         localStorage.removeItem('accessToken');
         localStorage.removeItem('isAuth');
         localStorage.removeItem('AccountInfoTake');

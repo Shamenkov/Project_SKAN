@@ -153,6 +153,16 @@
     border: solid 1px #C7C7C7;
 }
 
+.isLoadingError_span{
+    font-family: 'Inter';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: #FF5959;
+}
+
 .Submit_button{
     display: flex;
     align-items: center;

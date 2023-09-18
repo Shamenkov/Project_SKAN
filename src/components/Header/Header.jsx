@@ -13,12 +13,9 @@ const Header = () =>{
 
     const isAuth = localStorage.getItem('isAuth')
     const AccountInfoTake = localStorage.getItem('AccountInfoTake');
+    const isLoading = localStorage.getItem('isLoading');
     const usedCompanyCount = useSelector(state =>state.accountInfo.usedCompanyCount)
     const companyLimit = useSelector(state =>state.accountInfo.companyLimit)
-    
-    const delay = (ms) =>{
-        return new Promise(r => setTimeout(() => r(), ms))
-    }
 
     const logoutFetch = () =>{
         dispatch(logout())
@@ -27,12 +24,14 @@ const Header = () =>{
     useEffect(() =>{
         setTimeout(() => dispatch(accountInfo()),3000)
     },[isAuth])
-
+    
+    useEffect(() =>{
+    },[isLoading])
     return(
         <div className="Header_container">
-            <img src={require ("..//images//MainLogo.png")} alt="MainLogo" />
+            <Link to="/" className="Header_mainLogoLink"><img src={require ("..//images//MainLogo.png")} alt="MainLogo" /></Link>            
             <nav className="navigation">
-                <a>Главная</a>
+                <Link to="/" >Главная</Link> 
                 <a>Тарифы</a>
                 <a>FAQ</a>
             </nav>
@@ -41,14 +40,14 @@ const Header = () =>{
                     <div>Использовано компаний <p className="UsedCompCount">{usedCompanyCount}</p></div>
                     <div className="LimitCompBlock">Лимит по компаниям <p className="LimitComp">{companyLimit}</p></div>
                  </div>}
-            {/* {isLoginLoading && 
+            {isLoading ?
                 <div className="Preloader">
                     <div className="loadingio-spinner-spinner-uftfniz7vpq"><div className="ldio-w8quksv06v">
                         <div>
                             </div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
                         </div>
                     </div>
-                </div>} */}
+                </div> : null}
             {isAuth ? 
             <div className="clientBlock">
                 <div className="clientInfo">

@@ -7,7 +7,7 @@ const ResultPage = () =>{
     //useSelector
     const store = useSelector(state => state)
     const docsData = useSelector(state => state.documentsReduce.items)
-    const data = useSelector(state => state.histograms.data)
+    const data = useSelector(state => state.histogramsReduce.data)
     const idsDataArray = useSelector(state => state.objectSearchReduce.items)
     //properties
     const sliderContainer = useRef(null)
@@ -38,10 +38,6 @@ const ResultPage = () =>{
     function removeHtmlTags(text) {
 		return text.replace(/<[^>]*>/g, '');
 	}
-
-    const delay = (ms) =>{
-        return new Promise(r => setTimeout(() => r(), ms))
-    }
    
     const prevSlide = () =>{
         if (position === 0){
@@ -72,9 +68,7 @@ const ResultPage = () =>{
 
     const paginationHendler =() =>{
         setPublicationDocCount(publicationDocCount+10)
-        console.log(publicationDocCount)
         setIsPagination(!isPagination)
-        delay(3000).then(fetchDocs())
     }
 
     //Fetch
@@ -90,19 +84,13 @@ const ResultPage = () =>{
     },[isPagination])
     
     useEffect(()=>{
-        setTimeout(() => fetchDocs(),3000)
+        setTimeout(() => console.log(data),3000)
+        // setTimeout(() => fetchDocs(),3000)
         setTimeout(() => setDocList(data[0].data),3000)
-        setTimeout(() => setDocCount(data[0].data.length),3000)
+        // setTimeout(() => setDocCount(data[0].data.length),3000)
         setTimeout(() => setRiskFactors(data[1].data),3000)
-        // delay(5000).then(fetchDocs())
-        // delay(7000).then(setDocList(data[0].data))
-        // delay(7000).then(setDocCount(data[0].data.length))
-        // delay(7000).then(setRiskFactors(data[1].data))
     },[])
-    
-
-    
-
+     
     return(
         <div className='Result'>
             <div className="ResultPage_container">
@@ -119,35 +107,34 @@ const ResultPage = () =>{
                 <h2>Общая сводка</h2>
                 <p>Найдено {docCount} вариантов</p>
                 <div className="Result_Summary">
-                    <button onClick={prevSlide}>
-                        <img src={require('../images/icons8-шеврон-вправо-90 1.png')}/>
-                    </button>
-                    <div className="Result_BoardList">
-                        <ul className="Result_ListTitle">
-                            <li>Период</li>
-                            <li>Всего</li>
-                            <li>Риски</li>
-                        </ul>
-                        <div className="Result_sliderContainer" ref={sliderContainer}>
-                            {docList.map((item, index) =>
-                            {const risk = riskFactors[index]
-                                return(
-                                    <div className="Result_ListContainer">
-                                <ul className="Result_List">
-                                    <li>{changeDate(item.date)}</li>
-                                    <li>{item.value}</li>
-                                    <li>{risk.value}</li>
-                                </ul>
-                            <img src={require('../images/Result_ListRectangle.png')}/>
-                            </div>
-                                )})}
+                <button onClick={prevSlide}>
+                    <img src={require('../images/icons8-шеврон-вправо-90 1.png')}/>
+                </button>
+                <div className="Result_BoardList">
+                    <ul className="Result_ListTitle">
+                        <li>Период</li>
+                        <li>Всего</li>
+                        <li>Риски</li>
+                    </ul>
+                    <div className="Result_sliderContainer" ref={sliderContainer}>
+                        {docList.map((item, index) =>
+                        {const risk = riskFactors[index]
+                            return(
+                                <div className="Result_ListContainer">
+                            <ul className="Result_List">
+                                <li>{changeDate(item.date)}</li>
+                                <li>{item.value}</li>
+                                <li>{risk.value}</li>
+                            </ul>
+                        <img src={require('../images/Result_ListRectangle.png')}/>
                         </div>
-                    </div>    
-                    <button onClick={nextSlide}>
-                        <img src={require('../images/icons8-шеврон-вправо-90 2.png')}/>
-                    </button>                 
-                </div>
-                
+                            )})}
+                    </div>
+                </div>    
+                <button onClick={nextSlide}>
+                    <img src={require('../images/icons8-шеврон-вправо-90 2.png')}/>
+                </button>                 
+            </div>               
             </div>
             <div className="ResultPage_section3">
                 <h2>Список документов</h2>
