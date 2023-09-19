@@ -7,7 +7,6 @@ const initialState ={
 const histogramsReduce = (state=initialState, action) => {
     switch (action.type){
         case SET_HISTOGRAMS:
-            console.log(action.payload)
             return{
             ...state,
             data: action.payload.data

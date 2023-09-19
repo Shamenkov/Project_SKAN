@@ -3,9 +3,7 @@ import './SearchForm.css'
 import DatePicker, { registerLocale, setDefaultLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ru from 'date-fns/locale/ru';
-import { useDispatch, useSelector } from "react-redux";
-import { histograms} from "../../redux/action/histograms";
-import { objectSearch} from "../../redux/action/objectSearch";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 registerLocale('ru', ru)
 setDefaultLocale('ru')
@@ -13,8 +11,10 @@ setDefaultLocale('ru')
 const SearchForm = () =>{
     const store = useSelector(state => state)
     //USESTATE/DISPATCH
-    const dispatch = useDispatch();
     const [isValueNotEmpty, setIsValueNotEmpty] = useState(false);
+    const [innError, setInnError] = useState(false)
+    const [docError, setdocError] = useState(false)
+    const [dateError, setdateError] = useState(false)
 
     const [maxFullness, setMaxFullness] = useState(false)
     const [businesContext, setBusinesContext] = useState(false)
@@ -43,17 +43,22 @@ const SearchForm = () =>{
         if (Date.parse(startDate) >= Date.parse(endDate)) {
             setvalidateErrorsDate('Введите корректные данные!');
            setDateValidate(false);
+           setdateError(true)
         } else if ((Date.parse(startDate) || Date.parse(endDate)) > Date.now()) {
             setvalidateErrorsDate('Введите корректные данные!');
            setDateValidate(false);
+           setdateError(true)
         } else if (endDate === '') {
             setvalidateErrorsDate('Обязательное поле!');
            setDateValidate(false);
+           setdateError(true)
         }else if (startDate  === '') {
             setvalidateErrorsDate('Обязательное поле!');
             setDateValidate(false);
+            setdateError(true)
         }
         else {
+            setdateError(false)
             setDateValidate(true)
             setvalidateErrorsDate('');            
             }
@@ -63,11 +68,14 @@ const SearchForm = () =>{
         if (!docCount.length) {
            setValidateErrorsDocCount('Обязательное поле!');
            setErrorsDocCount(false);
+           setdocError(true)
         } else if (Number(docCount) <1 || Number(docCount) > 1000) {
             setValidateErrorsDocCount('Введите корректные данные!');
             setErrorsDocCount(false);
+            setdocError(true)
         } else {
             setErrorsDocCount(true)
+            setdocError(false)
            setValidateErrorsDocCount('');            
             }
         }
@@ -83,12 +91,15 @@ const SearchForm = () =>{
         if (!inn.length) {
             setValidateErrorsInn ('Это обязательное поле, введите ИНН!');
             setErrorsInn(false);
+            setInnError(true)
         } else if (/[^0-9]/.test(inn)) {
             setValidateErrorsInn('Введите корректные данные!');
             setErrorsInn(false) 
+            setInnError(true)
         } else if ([10, 12].indexOf(inn.length) === -1) {
             setValidateErrorsInn('Введите корректные данные!');
             setErrorsInn(false);
+            setInnError(true)
         } else {
             var checkDigit = function (inn, coefficients) {
                 var n = 0;
@@ -103,6 +114,7 @@ const SearchForm = () =>{
                     if (n10 === parseInt(inn[9])) {
                         setValidateErrorsInn('')
                         setErrorsInn(true)
+                        setInnError(false)
                         result = true;
                     }
                     break;
@@ -112,6 +124,7 @@ const SearchForm = () =>{
                     if ((n11 === parseInt(inn[10])) && (n12 === parseInt(inn[11]))) {
                         setValidateErrorsInn('')
                         setErrorsInn(true)
+                        setInnError(false)
                         result = true;
                     }
                     break;
@@ -119,6 +132,7 @@ const SearchForm = () =>{
             if (!result) {
                 setValidateErrorsInn('Введите корректные данные');
                 setErrorsInn(false);
+                setInnError(true)
             }
         }
         return result;
@@ -130,8 +144,7 @@ const SearchForm = () =>{
 
     // REQUEST
     const fetchHistogram = () =>{
-        const innerData = {
-            "intervalType": "month",
+            localStorage.setItem("innerData", JSON.stringify({"intervalType": "month",            
             "histogramTypes": [
                 "totalDocuments",
                 "riskFactors"
@@ -164,12 +177,7 @@ const SearchForm = () =>{
                 "excludeAnnouncements": anonsAndCalendar,
                 "excludeDigests": true
             }
-        }
-          
-
-        console.log(innerData);
-        dispatch(histograms(innerData))
-        dispatch(objectSearch(innerData))
+        }))
     }
 
     //USE-EFFECT
@@ -191,8 +199,8 @@ const SearchForm = () =>{
             <div className="FormSetting_container">
                 <div className="SearchForm_section1">
                     <label className="FormLabel_Inn">
-                        <p className="FormInputTitle">ИНН компании *</p>
-                        <input onBlur={() => validateInn(innValue)} onChange={e=>setInnValue(e.target.value)}placeholder="10 цифр" name="INN"/>
+                        <p className="FormInputTitle">ИНН компании {innError ? <span style={{color: 'red'}}>*</span>: <span style={{color: 'black'}}>*</span>}</p>
+                        <input className={innError ? 'innError' : 'innValue'} onBlur={() => validateInn(innValue)} onChange={e=>setInnValue(e.target.value)}placeholder="10 цифр" name="INN"/>
                         <span>{validateErrorsInn}</span>
                     </label>
                     <label>
@@ -204,12 +212,12 @@ const SearchForm = () =>{
                         </select>
                     </label>
                     <label className="FormLabel_DocCount">
-                        <p className="FormInputTitle">Количество документов в выдаче*</p>
-                        <input  onBlur={() => validateDocCount(docCountValue)} onChange={e=>setDocCountValue(e.target.value)}placeholder="от 1 до 1000 цифр" name="DocCount" type='number'/>
+                        <p className="FormInputTitle">Количество документов в выдаче {docError ? <span style={{color: 'red'}}>*</span>: <span style={{color: 'black'}}>*</span>}</p>
+                        <input className={docError ? 'docError' : 'docCount'} onBlur={() => validateDocCount(docCountValue)} onChange={e=>setDocCountValue(e.target.value)}placeholder="от 1 до 1000 цифр" name="DocCount" type='number'/>
                         <span>{validateErrorsDocCount}</span>
                     </label>
                     <label className="FormLabel_Date">
-                        <p className="FormInputTitle">Диапазон поиска *</p>
+                        <p className="FormInputTitle">Диапазон поиска {dateError ? <span style={{color: 'red'}}>*</span>: <span style={{color: 'black'}}>*</span>}</p>
                         <div className="datepicker_container" >
                             <DatePicker 
                             onBlur={() => validateDateValue(startDate, endDate)}
@@ -217,10 +225,11 @@ const SearchForm = () =>{
                             selected={startDate} 
                             onChange={HandlerChangeStartDate} 
                             placeholderText='Дата начала' 
-                            className="startDate"
+                            className = {dateError ? 'dateError' : "startDate"}
                             dateFormat='dd/MM/yyyy'
                             />
                             <DatePicker 
+                            className = {dateError ? 'dateError' : "endDate"}
                             onBlur={() => validateDateValue(startDate, endDate)}
                             wrapperClassName="datePicker"
                             endDate={endDate} 
@@ -228,11 +237,10 @@ const SearchForm = () =>{
                             selected={endDate} 
                             onChange={(date) => setEndDate(new Date(Date.parse(date)))} 
                             placeholderText='Дата конца'   
-                            className="endDate"
                             dateFormat='dd/MM/yyyy'
                             />                            
                         </div>
-                        <span>{validateErrorsDate}</span>
+                        <span style={{textAlign: "center"}}>{validateErrorsDate}</span>
                     </label>
                 </div>
                 <div className="SearchForm_section2">

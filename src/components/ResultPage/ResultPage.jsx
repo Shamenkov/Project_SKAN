@@ -1,21 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { appAPI } from "../../api/indexAPI";
 import {documents} from "../../redux/action/documents";
+import { histograms } from "../../redux/action/histograms";
+import { objectSearch } from "../../redux/action/objectSearch";
 import './ResultPage.css'
 
 const ResultPage = () =>{
     //useSelector
     const store = useSelector(state => state)
-    const docsData = useSelector(state => state.documentsReduce.items)
-    const data = useSelector(state => state.histogramsReduce.data)
-    const idsDataArray = useSelector(state => state.objectSearchReduce.items)
-    //properties
-    const sliderContainer = useRef(null)
-    const dispatch = useDispatch()
-    let position = 0
-    const idsArray = idsDataArray.map(item => item.encodedId)
-    const checkMobilePlatform = window.innerWidth <= 767.98;
+    // const docsData = useSelector(state => state.documentsReduce.items)
+
     //useState
+    const [docsData, setDocsData] = useState([])
+    const [publicDocs, setPublicDocs] = useState([])
     const [prev,setPrev] = useState(false)
     const [next,setNext] = useState(false)
     const [docList, setDocList] = useState([])
@@ -23,6 +21,22 @@ const ResultPage = () =>{
     const [riskFactors,setRiskFactors] = useState([])
     const [publicationDocCount, setPublicationDocCount] = useState(10)
     const [isPagination,setIsPagination] = useState(false)
+    const [pubDocsLoadet, setPubDocsLoadet] = useState(false)
+    const [isLoading,setIsLoading]= useState(false)
+
+    //properties
+    const innerData = JSON.parse (localStorage.getItem ("innerData"))
+    const sliderContainer = useRef(null)
+
+    let position = 0
+    const mobileM = window.innerWidth <= 325;
+    const mobileL = window.innerWidth <= 424;
+    const Pud = window.innerWidth <= 767.98;
+    const Note1200 = window.innerWidth <= 1100;
+    const Note1440 = window.innerWidth <= 1440;
+
+    
+
     //Logic
     function changeDate(inputDate) {
 		const parts = inputDate.split('T');
@@ -52,17 +66,80 @@ const ResultPage = () =>{
     }
 
     const nextSlide = () =>{
-        if (position <= -(docList.length - 10) * 145 + 100){
-            setNext(true)
-            setPrev(false)
-        }else {
-            setNext(false)
-            setPrev(false)
-            position -=300
-            sliderContainer.current.childNodes.forEach(element => {
-                element.style = `transform: translateX(${position}px)`
-            });
+        if(mobileM){
+            if (position <= -(docList.length - 1) * 145 + 100){
+                setNext(true)
+                setPrev(false)
+            }else {
+                setNext(false)
+                setPrev(false)
+                position -=300
+                sliderContainer.current.childNodes.forEach(element => {
+                    element.style = `transform: translateX(${position}px)`
+                });
+            }
+        }else if(mobileL){
+            if (position <= -(docList.length - 1) * 145 + 100){
+                setNext(true)
+                setPrev(false)
+            }else {
+                setNext(false)
+                setPrev(false)
+                position -=300
+                sliderContainer.current.childNodes.forEach(element => {
+                    element.style = `transform: translateX(${position}px)`
+                });
+            }
+        }else if(Pud){
+            if (position <= -(docList.length - 4) * 145 + 100){
+                setNext(true)
+                setPrev(false)
+            }else {
+                setNext(false)
+                setPrev(false)
+                position -=300
+                sliderContainer.current.childNodes.forEach(element => {
+                    element.style = `transform: translateX(${position}px)`
+                });
+            }
+        }else if(Note1200){
+            if (position <= -(docList.length - 6) * 145 + 100){
+                setNext(true)
+                setPrev(false)
+            }else {
+                setNext(false)
+                setPrev(false)
+                position -=300
+                sliderContainer.current.childNodes.forEach(element => {
+                    element.style = `transform: translateX(${position}px)`
+                });
+            }
+        }else if(Note1440){
+            if (position <= -(docList.length - 8) * 145 + 100){
+                setNext(true)
+                setPrev(false)
+            }else {
+                setNext(false)
+                setPrev(false)
+                position -=300
+                sliderContainer.current.childNodes.forEach(element => {
+                    element.style = `transform: translateX(${position}px)`
+                });
+            }
+        }else{
+            if (position <= -(docList.length - 10) * 145 + 100){
+                setNext(true)
+                setPrev(false)
+            }else {
+                setNext(false)
+                setPrev(false)
+                position -=300
+                sliderContainer.current.childNodes.forEach(element => {
+                    element.style = `transform: translateX(${position}px)`
+                });
+            }
         }
+        
     }
 
 
@@ -70,26 +147,48 @@ const ResultPage = () =>{
         setPublicationDocCount(publicationDocCount+10)
         setIsPagination(!isPagination)
     }
+    
 
     //Fetch
-    const fetchDocs = () =>{
-        const data = {
-            ids : idsArray.splice(0,publicationDocCount)
-        }
-        dispatch(documents(data))
+    async function fetchHistogramDatas() {
+        const response = await appAPI.histograms(innerData)
+            setDocsData(response.data.data)
+            setDocList(response.data.data[0].data)
+            setRiskFactors(response.data.data[1].data)
+            setDocCount(response.data.data[0].data.length)
+            setIsLoading(false)
+    }
+
+    async function fetchObjectSearchDatas() {
+        const response = appAPI.objectSearch(innerData)
+        return response        
+        .then((response) => { 
+        const result = response.data.items.map(item => item.encodedId)
+        return result
+        })
+        .then((result) => {
+            const responsePublic = appAPI.documents({ids:result.splice(0, publicationDocCount)})
+            return responsePublic
+        })
+        .then((responsePublic) => {
+            setPublicDocs(responsePublic.data)
+        })
+        .then(() =>{
+            setPubDocsLoadet(true)
+        })
+
     }
 
     //useEffect
-    useEffect(() =>{
-    },[isPagination])
-    
     useEffect(()=>{
-        setTimeout(() => console.log(data),3000)
-        // setTimeout(() => fetchDocs(),3000)
-        setTimeout(() => setDocList(data[0].data),3000)
-        // setTimeout(() => setDocCount(data[0].data.length),3000)
-        setTimeout(() => setRiskFactors(data[1].data),3000)
+        fetchHistogramDatas()  
+        fetchObjectSearchDatas()
+        setIsLoading(true)
     },[])
+    
+    useEffect(() =>{
+        fetchObjectSearchDatas()
+    },[isPagination])
      
     return(
         <div className='Result'>
@@ -117,7 +216,16 @@ const ResultPage = () =>{
                         <li>Риски</li>
                     </ul>
                     <div className="Result_sliderContainer" ref={sliderContainer}>
-                        {docList.map((item, index) =>
+                    {isLoading ?
+                    <div className="loader">
+                        <div class="loadingio-spinner-spin-lr9ihre50v"><div class="ldio-1xcgjzigpjb">
+                        <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+                        </div>
+                        </div>
+                        <h3 className="loaderTitle">Загружаем данные</h3> 
+                    </div>
+                                         
+                 : docList.map((item, index) =>
                         {const risk = riskFactors[index]
                             return(
                                 <div className="Result_ListContainer">
@@ -128,7 +236,7 @@ const ResultPage = () =>{
                             </ul>
                         <img src={require('../images/Result_ListRectangle.png')}/>
                         </div>
-                            )})}
+                            )})}                        
                     </div>
                 </div>    
                 <button onClick={nextSlide}>
@@ -138,7 +246,7 @@ const ResultPage = () =>{
             </div>
             <div className="ResultPage_section3">
                 <h2>Список документов</h2>
-                {docsData ? <div className="Doc_container">{docsData.map(item =>
+                {publicDocs ? <div className="Doc_container">{publicDocs.map(item =>
                     {const xmlString = item.ok.content.markup;
                     const parser = new DOMParser;
                     const xmlDoc = parser.parseFromString(xmlString, 'text/xml');

@@ -6,6 +6,21 @@
     justify-content: space-between;
     height: 93px;
 }
+.Header_containerGreen{
+    margin: 0px 60px 0px 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 93px;
+    background: #029491;
+}
+
+@media screen and (max-width:780px) {
+    .Header_containerGreen{
+        margin: 0;
+    }
+}
 
 @media screen and (max-width:600px) {
     .Header_container{
@@ -14,6 +29,11 @@
 }
 .Header_mainLogoLink{
     display: flex;
+}
+
+.HeaderMobile_mainLogoLink{
+    display: flex;
+    margin-left: 60px;
 }
 
 .navigation{
@@ -136,13 +156,34 @@
     .Header_MobButton{
         display: flex;
         flex-direction: column;
-        height: 50px;
-        width: 100px;
+        height: 25px;
+        width: 30px;
         border: none;
         background: #fff;
         cursor: pointer;
     }
 }
+.Header_MobButtonActive{
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+    .Header_MobButtonActive{
+        display: flex;
+        flex-direction: column;
+        height: 25px;
+        width: 30px;
+        border: none;
+        background: #fff;
+        cursor: pointer;
+        margin-right: 60px;
+        background: transparent;
+    }
+    .Header_MobButtonActive img{
+        background: transparent;
+    }
+}
+
 .clientBlock{
     display: flex;
     flex-direction: row;

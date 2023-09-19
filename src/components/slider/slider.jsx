@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ItemBlock from "./itemBlock";
 import Slider from "react-slick";
 
@@ -21,7 +21,7 @@ const NextArrow = ({ onClick }) =>{
 
 
 const SliderComponent = () =>{
-    var settings = {
+    const [settings, setSettings] = useState({
         arrows: true,
         infinite: true,
         speed: 500,
@@ -29,7 +29,47 @@ const SliderComponent = () =>{
         slidesToScroll: 1,
         prevArrow: <PrevArrow />,
         nextArrow: <NextArrow />
-      };
+      })
+    
+    const mobileM = window.innerWidth <= 325;
+    const mobileL = window.innerWidth <= 424;
+    const Pud = window.innerWidth <= 768.98;
+    const Note1200 = window.innerWidth <= 1100;
+    
+    useEffect(() =>{
+        if(mobileM || mobileL || Pud){
+            setSettings ({
+                arrows: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                prevArrow: <PrevArrow />,
+                nextArrow: <NextArrow />
+              })
+        }else if(Note1200){
+            setSettings ({
+                arrows: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                prevArrow: <PrevArrow />,
+                nextArrow: <NextArrow />
+              })
+        }else{
+            setSettings ({
+                arrows: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                prevArrow: <PrevArrow />,
+                nextArrow: <NextArrow />
+              })
+        }
+    },[])
+    
     return(
         <Slider {...settings}>
             

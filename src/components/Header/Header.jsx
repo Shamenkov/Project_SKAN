@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import './Header.css'
 import { logout } from "../../redux/action/login";
 import { accountInfo } from "../../redux/action/getAccountInfo";
+import { useState } from "react";
 
 
 
 const Header = () =>{
+    const [isMobileActvie, setIsMobileActvie] = useState(false)
     const store = useSelector(state => state)
     const dispatch = useDispatch();
 
@@ -20,20 +22,34 @@ const Header = () =>{
     const logoutFetch = () =>{
         dispatch(logout())
     }
-    
+
+    const burgerClick = () =>{
+        setIsMobileActvie(!isMobileActvie)
+        console.log(isMobileActvie)
+    }
+
     useEffect(() =>{
         setTimeout(() => dispatch(accountInfo()),3000)
     },[isAuth])
     
     useEffect(() =>{
     },[isLoading])
+
+    
+    
     return(
-        <div className="Header_container">
-            <Link to="/" className="Header_mainLogoLink"><img src={require ("..//images//MainLogo.png")} alt="MainLogo" /></Link>            
+        <div className={isMobileActvie ? "Header_containerGreen" : "Header_container"}>
+            {isMobileActvie ? <Link className="HeaderMobile_mainLogoLink" to="/" onClick={burgerClick}>
+                    <img src={require ('../images/MobileHeaderLogo.png')} alt='MenuPng'/>
+            </Link>
+            :
+            <Link to="/" className="Header_mainLogoLink"><img src={require ("..//images//MainLogo.png")} alt="MainLogo" /></Link>
+            }
+                        
             <nav className="navigation">
                 <Link to="/" >Главная</Link> 
-                <a>Тарифы</a>
-                <a>FAQ</a>
+                <Link to="/Price" >Тарифы</Link> 
+                <Link to="/FAQ" >FAQ</Link>
             </nav>
             {AccountInfoTake && 
                 <div className="clientTarifInfo">
@@ -67,9 +83,15 @@ const Header = () =>{
                 <button className="Header_LoginButton"><Link to="/LoginPage" >Войти</Link></button>
             </div> 
             }
-            <button className="Header_MobButton">
+            {isMobileActvie ? <Link className="Header_MobButtonActive" to="/" onClick={burgerClick}>
+                    <img src={require ('../images/HeaderExit.png')} alt='MenuPng'/>
+            </Link>
+            :
+            <Link className="Header_MobButton" to="/mobileMain" onClick={burgerClick}>
                     <img src={require ('../images/HeaderMenu.png')} alt='MenuPng'/>
-            </button>
+            </Link>
+            }
+            
         </div>
     )
 }

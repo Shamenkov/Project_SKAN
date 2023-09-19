@@ -9,12 +9,10 @@ export const login = (login, password) => async(dispatch) =>{
         dispatch(setLogin(response.data));
         localStorage.setItem('isAuth', true);
         localStorage.setItem('accessToken', response.data.accessToken);  
-        localStorage.setItem('isLoading', true);
-        localStorage.removeItem('isLoadingError');
-              
+        localStorage.setItem('isLoading', true); 
     }
     catch(error){
-        localStorage.setItem('isLoadingError', true);
+        console.log('LOGIN ERROR', error)
     }
 }
 
@@ -27,6 +25,7 @@ export const logout = () => async(dispatch) =>{
         localStorage.removeItem('accessToken');
         localStorage.removeItem('isAuth');
         localStorage.removeItem('AccountInfoTake');
+        localStorage.removeItem('innerData');
     }
     catch(error){
         console.error('Не удалось авторизироваться', error);

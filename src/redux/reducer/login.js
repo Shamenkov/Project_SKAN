@@ -4,7 +4,7 @@ const initialState ={
     accessToken: '',
     expire:'',
     isAuth: false,
-    isLoading:false
+    isLoading:false,
 }
 
 const login = (state = initialState, action) =>{
@@ -16,7 +16,7 @@ const login = (state = initialState, action) =>{
                 accessToken:action.payload.accessToken,
                 expire:action.payload.expire,
                 isAuth: true,
-                isLoading:true
+                isLoading:true,
             }
         case SET_LOGOUT:
         return{
