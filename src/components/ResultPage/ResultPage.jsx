@@ -218,7 +218,7 @@ const ResultPage = () =>{
                     <div className="Result_sliderContainer" ref={sliderContainer}>
                     {isLoading ?
                     <div className="loader">
-                        <div class="loadingio-spinner-spin-lr9ihre50v"><div class="ldio-1xcgjzigpjb">
+                        <div className="loadingio-spinner-spin-lr9ihre50v"><div className="ldio-1xcgjzigpjb">
                         <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
                         </div>
                         </div>
@@ -236,7 +236,8 @@ const ResultPage = () =>{
                             </ul>
                         <img src={require('../images/Result_ListRectangle.png')}/>
                         </div>
-                            )})}                        
+                            )})
+                            }                        
                     </div>
                 </div>    
                 <button onClick={nextSlide}>
