@@ -4,7 +4,7 @@ import './Placeholder.css'
 import { useDispatch, useSelector } from "react-redux";
 import { login} from "../../redux/action/login";
 
-const Placeholder = () =>{
+const Form = () =>{
     const [emailInputValue, setEmailInputValue] = useState('');
     const [emailDirty, setEmailDirty] = useState('');
     const [emailNotEmpty, setEmailNotEmpty] = useState(false)
@@ -104,7 +104,6 @@ const Placeholder = () =>{
                         onChange={(e) => setPasswordInputValue(e.target.value)}></input>
                         <span style={{color:'red', textAlign:"center"}}>{passwordDirty}</span>
                     </label>
-                    {/* {isAuth ? null : <span className="isLoadingError_span">Неправильный пароль</span>} */}
                 </div>
                {valueNotEmpty ? <button className="Submit_button" onClick={loginFetch}>Войти</button> : <button className="Submit_buttonDisabled" disabled onClick={loginFetch}>Войти</button>}
                 <a className='EmptyLink' href="#password">Востановить пароль</a>
@@ -127,4 +126,4 @@ const Placeholder = () =>{
     )
 }
 
-export default Placeholder;
+export default Form;
